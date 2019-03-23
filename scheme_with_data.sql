@@ -83,7 +83,8 @@ CREATE TABLE `realties` (
   `apartment_number` mediumint(8) unsigned DEFAULT NULL,
   `rooms` tinyint(3) unsigned NOT NULL,
   `floor` tinyint(3) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `rooms` (`rooms`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5274 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -136,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-23 18:22:53
+-- Dump completed on 2019-03-23 21:28:06
