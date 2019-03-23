@@ -28,7 +28,7 @@ CREATE TABLE `clients` (
   `address` varchar(512) NOT NULL,
   `phone` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `photos` (
   PRIMARY KEY (`id`),
   KEY `realty_id` (`realty_id`),
   CONSTRAINT `photos_ibfk_1` FOREIGN KEY (`realty_id`) REFERENCES `realties` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13552 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=28855 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +63,7 @@ CREATE TABLE `realties` (
   `rooms` tinyint(3) unsigned NOT NULL,
   `floor` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2505 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5274 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,8 +79,8 @@ CREATE TABLE `realty_offers` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
-  UNIQUE KEY `realty_id` (`realty_id`) USING BTREE,
   KEY `client_id` (`client_id`),
+  KEY `realty_id` (`realty_id`) USING BTREE,
   CONSTRAINT `realty_offers_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`) ON DELETE CASCADE,
   CONSTRAINT `realty_offers_ibfk_2` FOREIGN KEY (`realty_id`) REFERENCES `realties` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -95,4 +95,4 @@ CREATE TABLE `realty_offers` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-23 17:47:52
+-- Dump completed on 2019-03-23 18:23:03
