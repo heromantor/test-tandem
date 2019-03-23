@@ -4,7 +4,8 @@
 3. xmlwriter
 
 #### Установка
-composer install
+1. composer install
+2. Создать .env файл на основе .env.dist
 
 #### Содержимое 
 .env - настройки соединения с бд
