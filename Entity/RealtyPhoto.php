@@ -5,13 +5,13 @@ namespace App\Entity;
 class RealtyPhoto
 {
     /**
-     * @var string|null
-     */
-    private $url;
-    /**
      * @var string
      */
     private $id;
+    /**
+     * @var string
+     */
+    private $url;
 
     public function __construct(string $id, string $url)
     {
@@ -24,7 +24,7 @@ class RealtyPhoto
         return $this->url;
     }
 
-    public function getId(): ?string
+    public function getId(): string
     {
         return $this->id;
     }

@@ -9,7 +9,7 @@ class Client
      */
     private $id;
     /**
-     * @var array|RealtyPhoto[]
+     * @var string
      */
     private $name = '';
     /**

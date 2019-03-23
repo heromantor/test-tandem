@@ -5,7 +5,7 @@ namespace App\Entity;
 class Realty
 {
     /**
-     * @var string|null
+     * @var string
      */
     private $id;
     /**
@@ -19,19 +19,19 @@ class Realty
     /**
      * @var float
      */
-    private $area = '';
+    private $area = 1;
     /**
      * @var int
      */
-    private $appartmentNumber = '';
+    private $appartmentNumber = 1;
     /**
      * @var int
      */
-    private $rooms = '';
+    private $rooms = 1;
     /**
      * @var int
      */
-    private $floor = '';
+    private $floor = 1;
 
 
     public function __construct(
@@ -58,7 +58,7 @@ class Realty
         return $this;
     }
 
-    public function getId(): ?string
+    public function getId(): string
     {
         return $this->id;
     }
