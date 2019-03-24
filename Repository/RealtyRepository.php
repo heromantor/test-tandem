@@ -115,14 +115,18 @@ class RealtyRepository
               JOIN clients c ON c.id=ro.client_id
         ', $where);
 
-        $stmt = $this->pdo->prepare($sql);
-
-        $stmt->execute($whereParams);
-
         $result = [ ];
 
-        while(false !== ($row = $stmt->fetch(\PDO::FETCH_ASSOC))) {
-            $result[] = $this->deserializeRealtyOfferRow($client, $row);
+        try {
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->execute($whereParams);
+
+            while(false !== ($row = $stmt->fetch(\PDO::FETCH_ASSOC))) {
+                $result[] = $this->deserializeRealtyOfferRow($client, $row);
+            }
+        } catch (\PDOException $e) {
+            throw new RepositoryException(sprintf("Error while executing sql query: %s", $e->getMessage()), 0, $e);
         }
 
         return $this->extendRealtyOffersWithPhotos($result);

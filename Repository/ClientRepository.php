@@ -31,10 +31,14 @@ class ClientRepository
             LIMIT 1 
         ';
 
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute();
 
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            throw new RepositoryException(sprintf("Error while executing sql query: %s", $e->getMessage()), 0, $e);
+        }
 
         if(false === $row) {
             return null;
