@@ -1,15 +1,17 @@
 <?php
 namespace App\Entity;
 
-
+/**
+ * Фотография объекта недвижимости
+ */
 class RealtyPhoto
 {
     /**
-     * @var string
+     * @var string ID
      */
     private $id;
     /**
-     * @var string
+     * @var string URL
      */
     private $url;
 
@@ -28,5 +30,4 @@ class RealtyPhoto
     {
         return $this->id;
     }
-
 }

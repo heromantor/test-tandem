@@ -7,14 +7,19 @@ use App\Entity\RealtyOffer;
 use App\Entity\RealtyPhoto;
 use PDO;
 
+/**
+ * Репозиторий объектов недвижимости
+ *
+ * Репозиторий + DAO + Mapper
+ */
 class RealtyRepository
 {
     /**
-     * @var PDO
+     * @var PDO PDO
      */
     private $pdo;
     /**
-     * @var \DateTimeZone
+     * @var \DateTimeZone UTC  таймзона
      */
     private $utc_timezone;
 
@@ -69,12 +74,14 @@ class RealtyRepository
     }
 
     /**
+     * Во
+     *
      * @return iterable|Realty[]
      */
-    public function getRealtyOffersForClient(Client $client, ?int $roomsCount, bool $isSkipDeleted = true): iterable
+    public function getRealtyOffersForClient(Client $client, ?int $roomCount, bool $isSkipDeleted = true): iterable
     {
-        if(null !== $roomsCount && $roomsCount < 1) {
-            throw new \InvalidArgumentException(sprintf("Rooms counts must be > 1, '%d' given", $roomsCount));
+        if(null !== $roomCount && $roomCount < 1) {
+            throw new \InvalidArgumentException(sprintf("Rooms counts must be > 1, '%d' given", $roomCount));
         }
 
         if(null === $client->getId()) {
@@ -89,9 +96,9 @@ class RealtyRepository
             $client->getId()
         ];
 
-        if(null !== $roomsCount) {
+        if(null !== $roomCount) {
             $where[] = 'r.rooms=?';
-            $whereParams[] = $roomsCount;
+            $whereParams[] = $roomCount;
         }
 
         if($isSkipDeleted) {

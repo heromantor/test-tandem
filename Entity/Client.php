@@ -1,26 +1,27 @@
 <?php
 namespace App\Entity;
 
-
+/**
+ * Клиент
+ */
 class Client
 {
     /**
-     * @var string
+     * @var string Идентификатор
      */
     private $id;
     /**
-     * @var string
+     * @var string Имя
      */
     private $name = '';
     /**
-     * @var string
+     * @var string Адрес
      */
     private $address = '';
     /**
-     * @var string
+     * @var string Телефон
      */
     private $phone = '';
-
 
     public function __construct(
         string $id,
@@ -54,7 +55,4 @@ class Client
     {
         return $this->phone;
     }
-
-
-
 }

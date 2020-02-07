@@ -1,38 +1,39 @@
 <?php
 namespace App\Entity;
 
-
+/**
+ * Объект недвижиости
+ */
 class Realty
 {
     /**
-     * @var string
+     * @var string ID
      */
     private $id;
     /**
-     * @var array|RealtyPhoto[]
+     * @var array|RealtyPhoto[] Фотографии
      */
     private $photos = [ ];
     /**
-     * @var string
+     * @var string Вдрес
      */
     private $address = '';
     /**
-     * @var float
+     * @var float Площадь
      */
     private $area = 1;
     /**
-     * @var int
+     * @var int Номерр квартиры
      */
     private $appartmentNumber = 1;
     /**
-     * @var int
+     * @var int Кол-во комнат
      */
     private $rooms = 1;
     /**
-     * @var int
+     * @var int Этаж
      */
     private $floor = 1;
-
 
     public function __construct(
         string $id,
@@ -95,6 +96,4 @@ class Realty
     {
         return $this->floor;
     }
-
-
 }

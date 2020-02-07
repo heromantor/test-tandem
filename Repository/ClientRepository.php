@@ -4,10 +4,15 @@ namespace App\Repository;
 use App\Entity\Client;
 use PDO;
 
+/**
+ * Репозиторий клиентов
+ *
+ * Репозиторий + DAO + Mapper
+ */
 class ClientRepository
 {
     /**
-     * @var PDO
+     * @var PDO PDO
      */
     private $pdo;
 

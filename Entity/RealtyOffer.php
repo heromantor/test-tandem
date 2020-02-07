@@ -1,32 +1,33 @@
 <?php
 namespace App\Entity;
 
-
 use DateTimeImmutable;
 
+/**
+ * Предложение недвижимости
+ */
 class RealtyOffer
 {
     /**
-     * @var Realty
+     * @var Realty Объект недвижимости
      */
     private $realty;
     /**
-     * @var Client
+     * @var Client Клиент
      */
     private $client;
     /**
-     * @var DateTimeImmutable|null
+     * @var DateTimeImmutable|null Дата обновления
      */
     private $updatedAt;
     /**
-     * @var DateTimeImmutable|null
+     * @var DateTimeImmutable|null Дата удаления
      */
     private $deletedAt;
     /**
-     * @var DateTimeImmutable
+     * @var DateTimeImmutable Дата создания
      */
     private $createdAt;
-
 
     public function __construct(
         Client $client,
@@ -75,6 +76,4 @@ class RealtyOffer
     {
         return $this->createdAt;
     }
-
-
 }

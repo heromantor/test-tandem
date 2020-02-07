@@ -1,19 +1,37 @@
 <?php
 namespace App;
 
-
 use App\Entity\RealtyOffer;
 use DateTimeImmutable;
 use XMLWriter;
 
+/**
+ * Экспортер предложений в xml формат
+ */
 class XmlExporter
 {
+    /**
+     * Кодировка
+     */
     const DEFAULT_XML_ENCODING = 'utf-8';
+
+    /**
+     * Namespace
+     */
     const DEFAULT_FEED_NS = 'http://webmaster.yandex.ru/schemas/feed/realty/2010-06';
+
+    /**
+     * Едининцы измерения площади по умолчанию
+     */
     const DEFAULT_AREA_UNITS = 'кв. м';
 
     /**
-     * @param iterable|RealtyOffer[] $offers
+     * Экспортрует набор предложений в файл.
+     *
+     * @param string $outputPath Путь до файла
+     * @param RealtyOffer[] $offers Набор предложений
+     *
+     * @return self
      */
     public function exportToFile(string $outputPath, iterable $offers): self
     {
@@ -42,6 +60,12 @@ class XmlExporter
         return $this;
     }
 
+    /**
+     * Генерирует одно предложение в xml
+     *
+     * @param XMLWriter $writer
+     * @param RealtyOffer $offer
+     */
     private function dumpOffer(XMLWriter $writer, RealtyOffer $offer): void
     {
         $realty = $offer->getRealty();
@@ -87,6 +111,12 @@ class XmlExporter
         $writer->endElement(); // offer
     }
 
+    /**
+     * Форматурет дату
+     *
+     * @param DateTimeImmutable $date Дата
+     * @return string Отформатированная дата
+     */
     private function formatDate(DateTimeImmutable $date): string
     {
         return $date->format('Y-m-d\TH:i:sP');
